@@ -2,6 +2,7 @@
 
 namespace Dynamic\Elements\Elements;
 
+use Colymba\BulkUpload\BulkUploader;
 use DNADesign\Elemental\Models\BaseElement;
 use Dynamic\Elements\Model\GalleryImage;
 use SilverStripe\Forms\FieldList;
@@ -58,6 +59,7 @@ class ElementPhotoGallery extends BaseElement
             $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
             $config->removeComponentsByType(GridFieldDeleteAction::class);
             $config->addComponent(new GridFieldDeleteAction(false));
+            $config->addComponent(new BulkUploader());
             $imagesField = GridField::create('Images', 'Images', $this->Images()->sort('SortOrder'), $config);
             $fields->addFieldToTab('Root.Main', $imagesField);
         }
