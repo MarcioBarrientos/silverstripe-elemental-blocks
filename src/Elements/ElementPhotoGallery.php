@@ -59,7 +59,7 @@ class ElementPhotoGallery extends BaseElement
             $config->removeComponentsByType(GridFieldAddExistingAutocompleter::class);
             $config->removeComponentsByType(GridFieldDeleteAction::class);
             $config->addComponent(new GridFieldDeleteAction(false));
-            $config->addComponent(new BulkUploader());
+            $config->addComponent(new BulkUploader(null, null, true));
             $imagesField = GridField::create('Images', 'Images', $this->Images()->sort('SortOrder'), $config);
             $fields->addFieldToTab('Root.Main', $imagesField);
         }
